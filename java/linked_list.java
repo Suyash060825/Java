@@ -1,0 +1,126 @@
+package Softskills;
+class Node
+{
+    int data;
+    Node next;
+    Node(int d)
+    {
+        data=d;
+    }
+}
+public class linked_list {
+    Node head;
+    void listLength()
+    {
+        System.out.println("");
+        int count=0;
+        if(head==null)
+        {
+            System.out.println("Length is 0");
+        }
+        else{
+            Node current=head;
+            while(current!=null)
+            {
+                count++;
+                current=current.next;
+            }
+            System.out.println("Length is "+ count);
+        }
+    }
+    void insertLast(int data)
+    {
+        Node newNode = new Node(data);
+        if(head==null)
+        {
+            head=newNode;
+        }
+        else{
+            Node current=head;
+            while(current.next!=null)
+            {
+                current =current.next;
+            }
+            current.next=newNode;
+        }
+    }
+    void deleteFirst()
+    {
+        Node current=head;
+        current=current.next;
+        head.next=null;
+        head=current;
+    }
+    void deleteLast()
+    {
+        if(head.next==null)
+        {
+            head=null;
+        }
+        else{
+            Node current=head;
+            Node n=current.next;
+            while(n.next!=null)
+            {
+                current=current.next;
+                n=n.next;
+            }
+            current.next=null;
+        }
+        Node current=head;
+        Node n=current.next;
+        while(n!=null)
+        {
+            current=current.next;
+            n=n.next;
+        }
+        current.next=null;
+    }
+    void insertFirst(int d)
+    {
+        Node newnode = new Node(d);
+        newnode.next=head;
+        head=newnode;
+    }
+    void returnhead()
+    {
+        System.out.println("");
+        if(head==null)
+        {
+            System.out.println("List is empty!");
+        }
+        else{
+            System.out.println("Head is "+ head.data);
+        }
+    }
+    static void display(Node head)
+    {
+        System.out.println("");
+        System.out.print(" Traversal:");
+        System.out.println("");
+        Node current=head;
+        while(current!=null)
+        {
+            System.out.print(current.data +"-> ");
+            current=current.next;
+        }
+    }
+    public static void main(String[] args) {
+        linked_list obj = new linked_list(); //memory address
+        obj.insertLast(10);
+        //System.out.println(obj);    prints:linked_list@2c7b84de
+        obj.insertLast(20);
+        obj.insertLast(30);
+        obj.insertLast(40);
+        obj.insertLast(50);
+        display(obj.head);
+        obj.deleteFirst();
+        display(obj.head);
+        obj.insertFirst(5);
+        display(obj.head);
+        obj.deleteLast();
+        display(obj.head);
+        obj.returnhead();
+        obj.listLength();   
+    } 
+}
